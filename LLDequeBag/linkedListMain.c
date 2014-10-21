@@ -54,6 +54,8 @@ int main(int argc, char* argv[]){
 	/* memory used AFTER creating LinkedList */
 	m2 = getMemoryUsage();
 	printf("Memory used by LinkedList: %ld KB \n", m2-m1);
+	printf("Memory one: %ld KB \n", m1); //todo remove
+	printf("Memory two: %ld KB \n", m2); //todo remove
 	#endif
   
 	t1 = getMilliseconds();/*Time before contains()*/
