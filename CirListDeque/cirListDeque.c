@@ -160,7 +160,7 @@ TYPE frontCirListDeque(struct cirListDeque *q)
     assert(q);
     assert(q->Sentinel);
     assert(q->Sentinel->next);
-	assert(!isEmpty(q));
+	assert(!isEmptyCirListDeque(q));
 
 	return(q->Sentinel->next->value);
 }
@@ -178,7 +178,7 @@ TYPE backCirListDeque(struct cirListDeque *q)
     assert(q);
     assert(q->Sentinel);
     assert(q->Sentinel->prev);
-    assert(!isEmpty(q));
+    assert(!isEmptyCirListDeque(q));
 
     return(q->Sentinel->prev->value);
 }
@@ -197,7 +197,7 @@ void _removeLink(struct cirListDeque *q, struct DLink *lnk)
     assert(lnk);
     assert(lnk->next);
     assert(lnk->prev);
-    assert(!isEmpty(q));
+    assert(!isEmptyCirListDeque(q));
 
     lnk->prev->next = lnk->next;
     lnk->next->prev = lnk->prev;
@@ -220,7 +220,7 @@ void removeFrontCirListDeque (struct cirListDeque *q) {
     assert(q);
     assert(q->Sentinel);
     assert(q->Sentinel->next);
-    assert(!isEmpty(q));
+    assert(!isEmptyCirListDeque(q));
 
     _removeLink(q,q->Sentinel->next);
 }
@@ -238,7 +238,7 @@ void removeBackCirListDeque(struct cirListDeque *q)
     assert(q);
     assert(q->Sentinel);
     assert(q->Sentinel->prev);
-    assert(!isEmpty(q));
+    assert(!isEmptyCirListDeque(q));
 
     _removeLink(q,q->Sentinel->prev);
 }
