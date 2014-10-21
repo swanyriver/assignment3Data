@@ -264,9 +264,10 @@ void _printList(struct linkedList* lst)
 	    //null checking
 	    assert(l);
 
-	    printf("%d\n",l->value);
+	    printf("%d, ",l->value);
 
 	}
+	printf("\n");
 
 }
 
