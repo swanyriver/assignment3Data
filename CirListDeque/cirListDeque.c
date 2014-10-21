@@ -100,15 +100,22 @@ void _addLinkAfter(struct cirListDeque *q, struct DLink *lnk, TYPE v)
     assert(lnk->next);
     assert(lnk->prev);
 
+    printf("sentinel=%x p:%x n:%x\n",q->Sentinel,q->Sentinel->prev,q->Sentinel->next);
+    printf("after\n");
+
     struct DLink *newLink = _createLink(v);
 
     newLink->prev = lnk;
     newLink->next = lnk->next;
 
-    lnk->prev->next = newLink;
-    lnk->prev = newLink;
+    lnk->next->prev = newLink;
+    lnk->next = newLink;
 
     q->size++;
+
+    printf("sentinel=%x p:%x n:%x\n",q->Sentinel,q->Sentinel->prev,q->Sentinel->next);
+    printf("new-Link=%x p:%x n:%x\n",newLink,newLink->prev,newLink->next);
+    printCirListDeque(q); //todo remove for real
 
 }
 
@@ -295,10 +302,12 @@ void printCirListDeque(struct cirListDeque *q)
     assert(q->Sentinel);
     assert(!isEmptyCirListDeque(q));
 
+    printf("size:%d  list: ",q->size);
+
     for(struct DLink *l=q->Sentinel->next; l!=q->Sentinel; l=l->next){
         assert(l);
 
-        printf("%f, ",l->value);
+        printf("%g, ",l->value);
     }
     printf("\n");
 
