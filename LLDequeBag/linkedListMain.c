@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <assert.h>
+
 
 /* 	VISUAL STUDIO (VS) USERS: COMMENT OUT THE LINE BELOW 
 	TO EXCLUDE THE MEMORY TEST CODE.
@@ -18,6 +20,7 @@ long getMemoryUsage() {
 	struct rusage usage; 
 	int ret;
 	ret = getrusage(who, &usage);	
+	assert(ret==0);
 	return usage.ru_maxrss; 
 }
 #endif
