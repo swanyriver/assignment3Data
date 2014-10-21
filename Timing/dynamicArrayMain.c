@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <assert.h>
 
 /* 	VISUAL STUDIO (VS) USERS: COMMENT OUT THE LINE BELOW 
 	TO EXCLUDE THE MEMORY TEST CODE.
@@ -18,6 +19,7 @@ long getMemoryUsage() {
 	struct rusage usage; 
 	int ret;
 	ret = getrusage(who, &usage);	
+	assert(ret==0);
 	return usage.ru_maxrss; 
 }
 #endif
@@ -51,6 +53,8 @@ int main(int argc, char* argv[]) {
 	/* memory used AFTER creating DynArr */
 	m2 = getMemoryUsage();  
 	printf("Memory used by DynArr: %ld KB \n", m2-m1);
+	printf("Memory one: %ld KB \n", m1); //todo remove
+	printf("Memory two: %ld KB \n", m2); //todo remove
 	#endif
 	
 	t1 = getMilliseconds();/*Time before contains()*/
