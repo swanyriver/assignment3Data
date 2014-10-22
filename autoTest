@@ -1,0 +1,13 @@
+#!/bin/bash
+n=256000
+
+for arg in "$@"  
+do
+    echo $arg
+    echo ////////////////////////////
+    echo "number of elements,memory,time" 
+    for ((i=1000; i<=n; i=i*2))
+    do
+       ./$arg $i
+    done    
+done            

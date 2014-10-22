@@ -52,9 +52,8 @@ int main(int argc, char* argv[]) {
 	#ifdef MEMORY_TEST_INCLUDED
 	/* memory used AFTER creating DynArr */
 	m2 = getMemoryUsage();  
-	printf("Memory used by DynArr: %ld KB \n", m2-m1);
-	printf("Memory one: %ld KB \n", m1); //todo remove
-	printf("Memory two: %ld KB \n", m2); //todo remove
+	//printf("Memory used by DynArr: %ld KB \n", m2-m1);
+	printf("%d,%ld", n,m2-m1);
 	#endif
 	
 	t1 = getMilliseconds();/*Time before contains()*/
@@ -65,7 +64,8 @@ int main(int argc, char* argv[]) {
 	
 	t2 = getMilliseconds();/*Time after contains()*/
 	
-	printf("Time for running contains() on %d elements: %g ms\n", n, t2-t1);
+//	printf("Time for running contains() on %d elements: %g ms\n", n, t2-t1);
+	printf(",%g\n", t2-t1);
   
 	/* delete DynArr */
 	deleteDynArr(b);
