@@ -1,5 +1,5 @@
 #!/bin/bash
-n=256000
+n=6400
 
 for arg in "$@"  
 do
