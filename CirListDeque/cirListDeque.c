@@ -323,11 +323,11 @@ void reverseCirListDeque(struct cirListDeque *q)
         assert(l);
 
         //swap next and prev pointers
-        struct DLink *temp = l->next;
+        struct DLink *preserved_next = l->next;
         l->next = l->prev;
-        l->prev = temp;
+        l->prev = preserved_next;
 
-        l=l->prev; //truly the next element
+        l=preserved_next;
 
     }while(l!=q->Sentinel);
 
