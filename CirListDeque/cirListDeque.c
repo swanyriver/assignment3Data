@@ -46,10 +46,11 @@ void _initCirListDeque (struct cirListDeque *q)
 
   	q->Sentinel = _createLink(0);
 
+  	//sentinal points to itself in empty list
   	q->Sentinel->next = q->Sentinel;
   	q->Sentinel->prev = q->Sentinel;
 
-  	q->size=0;
+  	q->size=0;  //init size
 }
 
 /*
@@ -74,9 +75,9 @@ struct cirListDeque *createCirListDeque()
 struct DLink * _createLink (TYPE val)
 {
 	struct DLink *newLink = malloc(sizeof(struct DLink));
-	assert(newLink);
+	assert(newLink);    //null checking
 
-	newLink->value=val;
+	newLink->value=val; //assign value
 
 	return newLink;
 
@@ -102,13 +103,15 @@ void _addLinkAfter(struct cirListDeque *q, struct DLink *lnk, TYPE v)
 
     struct DLink *newLink = _createLink(v);
 
+    //position link in list
     newLink->prev = lnk;
     newLink->next = lnk->next;
 
+    //adjacent links point at new link
     lnk->next->prev = newLink;
     lnk->next = newLink;
 
-    q->size++;
+    q->size++;  //the only function that increments size
 
 }
 
@@ -199,12 +202,14 @@ void _removeLink(struct cirListDeque *q, struct DLink *lnk)
     assert(lnk->prev);
     assert(!isEmptyCirListDeque(q));
 
+    //remove link from chain
     lnk->prev->next = lnk->next;
     lnk->next->prev = lnk->prev;
 
+    //free up memory
     free(lnk);
 
-    q->size--;
+    q->size--;  //the only function that decrements size
 
 }
 
@@ -266,7 +271,7 @@ void freeCirListDeque(struct cirListDeque *q)
 	    lnk=holder;
 	}
 	
-	free(lnk);
+	free(lnk); //free sentinel
 }
 
 /* Check whether the deque is empty
@@ -327,6 +332,7 @@ void reverseCirListDeque(struct cirListDeque *q)
         l->next = l->prev;
         l->prev = preserved_next;
 
+        //move to next link
         l=preserved_next;
 
     }while(l!=q->Sentinel);

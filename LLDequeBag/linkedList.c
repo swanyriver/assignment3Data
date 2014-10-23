@@ -28,12 +28,15 @@ struct linkedList{
 
 void _initList (struct linkedList *lst) {
 
+    //allocate mem for front sentinel
     lst->firstLink = malloc(sizeof(struct DLink));
     assert(lst->firstLink != NULL);
 
+    //allocate mem for front sentinel
     lst->lastLink = malloc(sizeof(struct DLink));
     assert(lst->lastLink != NULL);
 
+    //sentinals point to each other in empty list
     lst->firstLink->next = lst->lastLink;
     lst->lastLink->prev = lst->firstLink;
 
@@ -73,12 +76,14 @@ void _addLinkBefore(struct linkedList *lst, struct DLink *l, TYPE v)
 	assert(l);
 	assert(l->prev);
 
+	//allocate mem for new link and check for null
 	struct DLink *newLink = malloc(sizeof(struct DLink));
 	assert(newLink);
 
+	//assign value
 	newLink->value = v;
 
-	//set newlink links
+	//insert new link in list
 	newLink->next   = l;
 	newLink->prev   = l->prev;
 
@@ -86,7 +91,7 @@ void _addLinkBefore(struct linkedList *lst, struct DLink *l, TYPE v)
 	l->prev->next   = newLink;
 	l->prev         = newLink;
 
-	lst->size++;
+	lst->size++; //the only function that increments size
 
 }
 
@@ -191,7 +196,7 @@ void _removeLink(struct linkedList *lst, struct DLink *l)
 
     free(l);
 
-    lst->size--;
+    lst->size--; //the only function that decrements size
 	
 }
 
@@ -244,7 +249,7 @@ int isEmptyList(struct linkedList *lst) {
     //NULL checking
     assert(lst);
 
-	return(lst->size==0);
+	return(lst->size==0); //true if empty
 }
 
 
